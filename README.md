@@ -17,7 +17,6 @@ Experience **real-time color interaction**, **beautiful gradients**, and **smoot
 
 </div>
 
-![React Color Picker](./screenshot.png)
 
 ## ✨ Features
 
