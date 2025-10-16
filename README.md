@@ -17,11 +17,14 @@ A modern, interactive color picker built with React and Tailwind CSS. Features a
 - ⌨️ Keyboard Shortcuts — Speed up your workflow
 - 🪄 Gradient Backgrounds — Smooth transitions and aesthetic looks
 
-## Tech Stack
+## ⚡Tech Stack
 
-- React
-- Tailwind CSS
-- Vite
+| Technology          | Description                                   |
+| ------------------- | --------------------------------------------- |
+| ⚛️ **React**        | Frontend library for building interactive UIs |
+| 💨 **Tailwind CSS** | Utility-first CSS framework for fast styling  |
+| 🚀 **Vite**         | Super-fast bundler and development server     |
+
 
 ## Keyboard Shortcuts
 
