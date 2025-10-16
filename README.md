@@ -26,7 +26,7 @@ A modern, interactive color picker built with React and Tailwind CSS. Features a
 | 🚀 **Vite**         | Super-fast bundler and development server     |
 
 
-## Keyboard Shortcuts
+## ⌨️ Keyboard Shortcuts
 
 | Key     | Action                         |
 | ------- | ------------------------------ |
