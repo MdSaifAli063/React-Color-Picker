@@ -4,8 +4,6 @@
 A **modern, interactive, and visually stunning** color picker built using **React + Tailwind CSS**.  
 Experience **real-time color interaction**, **beautiful gradients**, and **smooth animations** — all in one lightweight app.
 
----
-
 ### 🚀 Built With
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
