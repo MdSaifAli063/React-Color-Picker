@@ -89,6 +89,7 @@ src/
 
 💡 Every little improvement helps make this project better for everyone.
 
-## License
+## 📜 License
 
-MIT License - feel free to use this project for learning or your own applications.
+🪪 MIT License
+Feel free to use this project for learning or in your own apps.
