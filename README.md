@@ -82,9 +82,12 @@ src/
 | 🌓 `getContrastColor` | Calculates contrast color for text      |
 | 🌗 `shadeColor`       | Generates lighter/darker color variants |
 
-## Contributing
+## 🤝 Contributing
 
-Feel free to submit issues and enhancement requests!
+- Contributions, issues, and feature requests are welcome!
+- If you’d like to improve this project, feel free to fork and submit a pull request.
+
+💡 Every little improvement helps make this project better for everyone.
 
 ## License
 
