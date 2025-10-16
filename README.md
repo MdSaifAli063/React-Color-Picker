@@ -28,9 +28,11 @@ A modern, interactive color picker built with React and Tailwind CSS. Features a
 
 ## Keyboard Shortcuts
 
-- `R` - Random color
-- `C` - Copy current color code
-- `←/→` - Navigate through colors
+| Key     | Action                         |
+| ------- | ------------------------------ |
+| `R`     | 🎲 Generate a random color     |
+| `C`     | 📋 Copy the current color code |
+| `← / →` | 🎯 Navigate between colors     |
 
 ## Getting Started
 
