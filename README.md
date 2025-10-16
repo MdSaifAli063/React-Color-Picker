@@ -76,11 +76,11 @@ src/
 
 ## 🧩 Color Utilities
 
-The project includes several color utility functions:
-
-- `hexToRgb`: Convert hex colors to RGB
-- `getContrastColor`: Calculate contrast text color
-- `shadeColor`: Generate lighter/darker color variants
+| Function              | Description                             |
+| --------------------- | --------------------------------------- |
+| 🎨 `hexToRgb`         | Converts HEX colors to RGB format       |
+| 🌓 `getContrastColor` | Calculates contrast color for text      |
+| 🌗 `shadeColor`       | Generates lighter/darker color variants |
 
 ## Contributing
 
