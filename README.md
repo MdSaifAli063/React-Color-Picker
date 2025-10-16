@@ -13,10 +13,11 @@ Experience **real-time color interaction**, **beautiful gradients**, and **smoot
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
-</div>
 ---
+</div>
 
-![image]()
+
+![image](https://github.com/MdSaifAli063/React-Color-Picker/blob/7b3c2d6089c36bfff738eb023032867848563603/Screenshot%202025-10-17%20011433_edited.png)
 
 ## ✨ Features
 
