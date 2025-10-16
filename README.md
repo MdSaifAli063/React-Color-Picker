@@ -74,7 +74,7 @@ src/
   └── assets/        # Static assets
 ```
 
-## Color Utilities
+## 🧩 Color Utilities
 
 The project includes several color utility functions:
 
