@@ -1,6 +1,7 @@
 # 🎨 React Color Picker
 
 <div align="center">
+  
 A **modern, interactive, and visually stunning** color picker built using **React + Tailwind CSS**.  
 Experience **real-time color interaction**, **beautiful gradients**, and **smooth animations** — all in one lightweight app.
 
