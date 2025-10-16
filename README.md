@@ -57,7 +57,7 @@ npm run dev
 
 4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-## Build
+### Build
 
 To create a production build:
 
@@ -65,7 +65,7 @@ To create a production build:
 npm run build
 ```
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
