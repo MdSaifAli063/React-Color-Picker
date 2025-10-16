@@ -1,5 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
+import 'tailwindcss/tailwind.css'
+import './index.css'
 
 /**
  * Utility: Convert hex color string to RGB object.
@@ -47,6 +49,49 @@ function shadeColor(hex, percent) {
   const B = Math.round((t - b) * p + b)
   const toHex = (n) => n.toString(16).padStart(2, '0')
   return `#${toHex(R)}${toHex(G)}${toHex(B)}`
+}
+
+/**
+ * Hook: responsive column count for rows layout.
+ * - lg (>=1024px): 5 columns
+ * - sm/md (>=640px): 3 columns
+ * - xs: 2 columns
+ */
+function useResponsiveCols() {
+  const [cols, setCols] = useState(5)
+
+  useEffect(() => {
+    const mqLg = window.matchMedia('(min-width: 1024px)')
+    const mqSm = window.matchMedia('(min-width: 640px)')
+
+    const update = () => {
+      if (mqLg.matches) setCols(5)
+      else if (mqSm.matches) setCols(3)
+      else setCols(2)
+    }
+
+    update()
+    mqLg.addEventListener?.('change', update)
+    mqSm.addEventListener?.('change', update)
+    return () => {
+      mqLg.removeEventListener?.('change', update)
+      mqSm.removeEventListener?.('change', update)
+    }
+  }, [])
+
+  return cols
+}
+
+/**
+ * Helper: chunk an array into rows of given size.
+ */
+function chunkArray(arr, size) {
+  if (size <= 0) return [arr]
+  const out = []
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size))
+  }
+  return out
 }
 
 function App() {
@@ -106,26 +151,33 @@ function App() {
     setSelected(colors[idx])
   }
 
+  // Rows layout
+  const cols = useResponsiveCols()
+  const rows = useMemo(() => chunkArray(filteredColors, cols), [filteredColors, cols])
+
   return (
-    <div className="w-full min-h-screen overflow-hidden" style={backgroundStyle}>
-      {/* Center everything within the viewport */}
-      <div className="max-w-6xl mx-auto min-h-screen px-6 py-8 flex flex-col items-center justify-center gap-8">
+    <div className="full-screen center-screen overflow-hidden bg-animated" style={backgroundStyle}>
+      {/* App container centered */}
+      <div className="app-container stack-center gap-8">
         {/* Header card */}
-        <div className="flex items-center gap-4 rounded-3xl px-8 py-4 shadow-2xl bg-black/30 backdrop-blur-md">
+        <div className="card card-dark elev-2 float-in center gap-4">
           <div
-            className="h-12 w-12 rounded-xl ring-2 ring-white/50 shadow-lg"
+            className="h-12 w-12 rounded-xl ring-2 ring-white/50 shadow-lg glow-ring"
             style={{ backgroundColor: selected.code }}
+            aria-hidden
           />
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <span className="text-3xl md:text-4xl font-bold text-white tracking-wider">
+          <div className="stack items-center sm:items-start text-center sm:text-left">
+            <span className="title responsive-text text-white tracking-wider">
               {selected.name}
             </span>
-            <div className="flex items-center gap-3">
-              <span className="text-white/90 text-lg font-mono">{selected.code}</span>
+            <div className="row">
+              <span className="text-white/90 font-mono">{selected.code}</span>
               <button
+                type="button"
                 onClick={handleCopy}
-                className="text-white/90 hover:text-white px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-all hover:scale-105 active:scale-95"
+                className="pill button-hover"
                 title="Copy hex code"
+                aria-live="polite"
               >
                 {copied ? 'Copied!' : 'Copy HEX'}
               </button>
@@ -135,92 +187,107 @@ function App() {
 
         {/* Big centered title */}
         <div
-          className="px-10 py-6 rounded-3xl shadow-2xl backdrop-blur-md"
+          className="card elev-3 glass-morphism"
           style={{
-            backgroundColor: textOnSelected === '#000000' ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.25)'
+            backgroundColor:
+              textOnSelected === '#000000' ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.25)'
           }}
         >
           <h1
-            className="text-5xl md:text-7xl font-black tracking-wider text-center"
+            className="title title-text text-center text-shadow-soft"
             style={{ color: textOnSelected }}
           >
             {selected.name.toUpperCase()}
           </h1>
         </div>
 
-        {/* Controls centered */}
-        <div className="w-full flex flex-col items-center gap-4">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+        {/* Controls */}
+        <div className="stack-center gap-4 w-full">
+          <div className="row flex-wrap justify-center w-full">
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search colors..."
-              className="w-full sm:w-80 px-6 py-3 rounded-full bg-white/80 text-lg placeholder:text-gray-500 text-gray-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/60"
+              className="input input-ghost w-full sm:w-80"
+              aria-label="Search colors"
             />
             <button
+              type="button"
               onClick={() => setQuery('')}
-              className="px-5 py-3 rounded-full bg-white/40 text-gray-800 hover:bg-white/60 transition-all hover:scale-105 active:scale-95"
+              className="btn btn-secondary button-hover"
+              title="Clear search"
             >
               Clear
             </button>
           </div>
-          <div className="flex items-center justify-center gap-4">
+          <div className="row justify-center">
             <button
+              type="button"
               onClick={handleRandom}
-              className="px-6 py-3 rounded-full bg-black/30 text-white hover:bg-black/40 transition-all hover:scale-105 active:scale-95 shadow-lg text-lg"
+              className="btn btn-primary button-hover"
+              title="Pick a random color"
             >
               Random Color
             </button>
             <button
+              type="button"
               onClick={() => setSelected(defaultColor)}
-              className="px-6 py-3 rounded-full bg-white/30 text-gray-900 hover:bg-white/50 transition-all hover:scale-105 active:scale-95 shadow-lg text-lg"
+              className="btn btn-secondary button-hover"
+              title="Reset to default"
             >
               Reset
             </button>
           </div>
         </div>
 
-        {/* Palette centered */}
+        {/* Palette - arranged in rows */}
         <div className="w-full">
-          <div className="mx-auto w-full max-w-4xl bg-white/20 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 px-6 py-6">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-h-[30vh] overflow-y-auto pr-2">
-              {filteredColors.map((clr) => {
-                const isActive = clr.name === selected.name
-                const swatchText = getContrastColor(clr.code)
-                return (
-                  <button
-                    key={clr.name}
-                    onClick={() => setSelected(clr)}
-                    title={`${clr.name} (${clr.code})`}
-                    className={[
-                      'relative outline-none px-5 py-2.5 rounded-full shadow-lg transition-all',
-                      'hover:scale-110 hover:shadow-xl active:scale-95'
-                    ].join(' ')}
-                    style={{
-                      backgroundColor: clr.code,
-                      color: swatchText,
-                      boxShadow: isActive
-                        ? '0 0 0 3px rgba(255,255,255,0.85), 0 10px 15px -3px rgba(0,0,0,0.3)'
-                        : undefined
-                    }}
-                  >
-                    <span className="font-medium">{clr.name}</span>
-                    {isActive && (
-                      <span
-                        className="absolute -top-1 -right-1 h-3 w-3 rounded-full ring-2 ring-white"
-                        style={{ backgroundColor: swatchText === '#000000' ? '#ffffff' : '#000000' }}
-                        aria-hidden
-                      />
-                    )}
-                  </button>
-                )
-              })}
+          <div className="card elev-2">
+            <div className="stack gap-3 maxh-30vh pr-2" role="list">
               {filteredColors.length === 0 && (
-                <div className="text-white/90 text-sm py-6 col-span-full text-center">
+                <div className="muted text-white/90 text-sm py-6 text-center">
                   No colors match “{query}”
                 </div>
               )}
+
+              {rows.map((row, rIdx) => (
+                <div
+                  key={`row-${rIdx}`}
+                  className="row justify-center gap-3"
+                  role="group"
+                  aria-label={`Row ${rIdx + 1}`}
+                >
+                  {row.map((clr) => {
+                    const isActive = clr.name === selected.name
+                    const swatchText = getContrastColor(clr.code)
+                    return (
+                      <button
+                        key={clr.name}
+                        type="button"
+                        onClick={() => setSelected(clr)}
+                        title={`${clr.name} (${clr.code})`}
+                        aria-pressed={isActive}
+                        role="listitem"
+                        className={['swatch color-item', isActive ? 'is-active' : ''].join(' ')}
+                        style={{
+                          backgroundColor: clr.code,
+                          color: swatchText
+                        }}
+                      >
+                        <span className="font-medium">{clr.name}</span>
+                        {isActive && (
+                          <span
+                            className="inline-block ml-2 h-2.5 w-2.5 rounded-full ring-2 ring-white align-middle"
+                            style={{ backgroundColor: swatchText === '#000000' ? '#ffffff' : '#000000' }}
+                            aria-hidden
+                          />
+                        )}
+                      </button>
+                    )
+                  })}
+                </div>
+              ))}
             </div>
           </div>
         </div>
