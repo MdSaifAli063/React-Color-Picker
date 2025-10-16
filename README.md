@@ -1,6 +1,22 @@
-# React Color Picker
+# 🎨 React Color Picker
 
-A modern, interactive color picker built with React and Tailwind CSS. Features a beautiful UI with dynamic backgrounds, color previews, and seamless interactions.
+<div align="center">
+A **modern, interactive, and visually stunning** color picker built using **React + Tailwind CSS**.  
+Experience **real-time color interaction**, **beautiful gradients**, and **smooth animations** — all in one lightweight app.
+
+---
+
+### 🚀 Built With
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
+
+---
+
+</div>
 
 ![React Color Picker](./screenshot.png)
 
