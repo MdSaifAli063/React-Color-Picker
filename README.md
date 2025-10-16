@@ -34,7 +34,7 @@ A modern, interactive color picker built with React and Tailwind CSS. Features a
 | `C`     | 📋 Copy the current color code |
 | `← / →` | 🎯 Navigate between colors     |
 
-## Getting Started
+## 🛠️ Getting Started
 
 1. Clone the repository:
 
