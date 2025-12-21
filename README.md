@@ -51,6 +51,7 @@ Experience **real-time color interaction**, **beautiful gradients**, and **smoot
 | `C`     | 📋 Copy the current color code |
 | `← / →` | 🎯 Navigate between colors     |
 
+
 ## 🛠️ Getting Started
 
 1. Clone the repository:
