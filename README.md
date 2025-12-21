@@ -108,6 +108,7 @@ src/
 
 💡 Every little improvement helps make this project better for everyone.
 
+
 ## 📜 License
 
 🪪 MIT License
