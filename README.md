@@ -33,6 +33,7 @@ Experience **real-time color interaction**, **beautiful gradients**, and **smoot
 - ⌨️ Keyboard Shortcuts — Speed up your workflow
 - 🪄 Gradient Backgrounds — Smooth transitions and aesthetic looks
 
+
 ## ⚡Tech Stack
 
 | Technology          | Description                                   |
