@@ -19,6 +19,7 @@ Experience **real-time color interaction**, **beautiful gradients**, and **smoot
 
 ![image](https://github.com/MdSaifAli063/React-Color-Picker/blob/7b3c2d6089c36bfff738eb023032867848563603/Screenshot%202025-10-17%20011433_edited.png)
 
+
 ## ✨ Features
 
 - 🌈 Dynamic Color Palette — Explore and pick from a vivid color range
