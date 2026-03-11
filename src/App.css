@@ -1,4 +1,4 @@
-/* Custom scrollbar */
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -18,7 +18,6 @@
     background: rgba(255, 255, 255, 0.4);
 }
 
-/* Smooth transitions */
 .color-transition {
     transition: all 0.3s ease-in-out;
 }
