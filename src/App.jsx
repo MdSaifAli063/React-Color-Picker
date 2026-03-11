@@ -27,10 +27,7 @@ function getContrastColor(hex) {
   return lum > 0.5 ? '#000000' : '#FFFFFF'
 }
 
-/**
- * Utility: Shade (lighten/darken) a hex color by percent (-100 to 100).
- * Positive values lighten, negative darken.
- */
+
 function shadeColor(hex, percent) {
   const { r, g, b } = hexToRgb(hex)
   const t = percent < 0 ? 0 : 255
@@ -42,12 +39,6 @@ function shadeColor(hex, percent) {
   return `#${toHex(R)}${toHex(G)}${toHex(B)}`
 }
 
-/**
- * Hook: responsive column count for rows layout.
- * - lg (>=1024px): 5 columns
- * - sm/md (>=640px): 3 columns
- * - xs: 2 columns
- */
 function useResponsiveCols() {
   const [cols, setCols] = useState(5)
 
