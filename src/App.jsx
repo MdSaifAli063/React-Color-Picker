@@ -92,7 +92,7 @@ function App() {
   const [query, setQuery] = useState('')
   const [copied, setCopied] = useState(false)
 
-  // Filter colors by name
+
   const filteredColors = useMemo(() => {
     const q = query.trim().toLowerCase()
     if (!q) return colors
@@ -101,7 +101,6 @@ function App() {
 
   const textOnSelected = getContrastColor(selected.code)
 
-  // Background gradient using the selected color
   const bg1 = shadeColor(selected.code, 30)
   const bg2 = shadeColor(selected.code, -40)
   const glow1 = shadeColor(selected.code, 45)
@@ -130,7 +129,6 @@ function App() {
     setSelected(colors[idx])
   }
 
-  // Rows layout
   const cols = useResponsiveCols()
   const rows = useMemo(() => chunkArray(filteredColors, cols), [filteredColors, cols])
 
