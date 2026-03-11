@@ -64,9 +64,6 @@ function useResponsiveCols() {
   return cols
 }
 
-/**
- * Helper: chunk an array into rows of given size.
- */
 function chunkArray(arr, size) {
   if (size <= 0) return [arr]
   const out = []
