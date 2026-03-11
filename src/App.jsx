@@ -3,10 +3,6 @@ import './App.css'
 import 'tailwindcss/tailwind.css'
 import './index.css'
 
-/**
- * Utility: Convert hex color string to RGB object.
- * Supports formats like "#RRGGBB" or "RRGGBB".
- */
 function hexToRgb(hex) {
   const clean = hex.replace('#', '')
   const bigint = parseInt(clean, 16)
@@ -17,9 +13,6 @@ function hexToRgb(hex) {
   }
 }
 
-/**
- * Utility: Calculate relative luminance (WCAG).
- */
 function relativeLuminance({ r, g, b }) {
   const srgb = [r, g, b].map((v) => {
     const c = v / 255
@@ -28,9 +21,7 @@ function relativeLuminance({ r, g, b }) {
   return 0.2126 * srgb[0] + 0.7152 * srgb[1] + 0.0722 * srgb[2]
 }
 
-/**
- * Utility: Choose black or white text color for best contrast against the given hex background.
- */
+
 function getContrastColor(hex) {
   const lum = relativeLuminance(hexToRgb(hex))
   return lum > 0.5 ? '#000000' : '#FFFFFF'
